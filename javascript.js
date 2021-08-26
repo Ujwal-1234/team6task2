@@ -34,6 +34,23 @@ function closeNav(){
     document.getElementById('main').style.display='block';
     
 }
+
+function supply_chain(){
+    document.getElementById('idcont').style.display='block';
+    document.getElementById('idcont1').style.display='none';
+    document.getElementById('idcon').style.display = 'none';
+}
+function critical_issues(){
+    document.getElementById('idcont1').style.display='block';
+    document.getElementById('idcont').style.display='none';
+    document.getElementById('idcon').style.display = 'none';
+}
+function progress(){
+    document.getElementById('idcon').style.display='block';
+    document.getElementById('idcont').style.display = 'none';
+    document.getElementById('idcont1').style.display = 'none';
+}
+
 function  exitConfirm(id, date, time){
         var ask = window.confirm("Are you sure you want to delete this Material?");
         if (ask) {

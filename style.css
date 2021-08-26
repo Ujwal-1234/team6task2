@@ -3,6 +3,15 @@
     flex-direction: row;
     float: left;
     min-width: 16em;
+    animation: disp ease 2s 1;
+}
+@keyframes disp {
+    0%{
+        opacity: 0.1;
+    }
+    100%{
+        opacity: 1;
+    }
 }
 .sidebar {
     height: 100%;
@@ -19,6 +28,7 @@
 }
 
 .cont{
+    display: none;
     position: absolute;
     border: solid 2px whitesmoke;
     width: 100%;
@@ -27,7 +37,47 @@
     right: 0%;
     bottom: 0%;
     overflow: auto;
+    animation: display ease 2s 1;
 }
+@keyframes display {
+    0%{
+        opacity: 0.1;
+    }
+    100%{
+        opacity: 100%;
+    }
+}
+.cont1{
+    display: none;
+    position: absolute;
+    border: solid 2px whitesmoke;
+    width: 98%;
+    height: 90%;
+    background-color: white;
+    right: 1%;
+    bottom: 0%;
+    overflow: auto;
+    animation: display ease 2s 1;
+}
+.cont2{
+    display: none;
+    position: absolute;
+    border: solid 2px whitesmoke;
+    width: 98%;
+    height: 90%;
+    background-color: white;
+    right: 1%;
+    bottom: 0%;
+    overflow: auto;
+    animation: display ease 2s 1;
+}
+.cont1::-webkit-scrollbar{
+    display: none;
+}
+.cont2::-webkit-scrollbar{
+    display: none;
+}
+
 .cont::-webkit-scrollbar{
     display: none;
 }
@@ -95,6 +145,8 @@ table tr td{
 .closebtn:hover{
     background-color: black;
     color: whitesmoke;
+    border-left: solid 1px white;
+    border-bottom: solid 2px white;
 }
 .menubar-con{
     position: absolute;
@@ -117,8 +169,18 @@ table tr td{
     display: none;
 }
 .menubar-con input:hover{
-    background-color: black;
-    color: white;
+    cursor: pointer;
+    animation: apear ease 1s 1;
+}
+@keyframes apear {
+    0%{
+        color: whitesmoke;
+        background-color: whitesmoke;
+    }
+    100%{
+        color: white;
+        background-color: black;
+    }
 }
 a{
     background-color: inherit;

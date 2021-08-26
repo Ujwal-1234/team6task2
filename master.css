@@ -2,11 +2,6 @@
     background-color: #191919;
     color: white;
 }
-input:hover{
-    cursor: pointer;
-    background-color: black;
-    color: white;
-}
 button:hover{
     cursor: pointer;
     background-color: black;
