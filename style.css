@@ -1,0 +1,201 @@
+.menu{
+    display: none;
+    flex-direction: row;
+    float: left;
+    min-width: 16em;
+}
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: auto;
+    transition: 0.5s;
+    padding-top: 60px;
+    border-right: solid 1px white;
+}
+
+.cont{
+    position: absolute;
+    border: solid 2px whitesmoke;
+    width: 100%;
+    height: 90%;
+    background-color: white;
+    right: 0%;
+    bottom: 0%;
+    overflow: auto;
+}
+.cont::-webkit-scrollbar{
+    display: none;
+}
+table{
+    overflow: auto;
+    width: 100%;
+    border: rgb(255, 255, 255) solid 1px;
+}
+table  tr{
+    overflow: auto;
+    width: 100%;
+    border: rgb(255, 255, 255) solid 1px;
+}
+table tr th{
+    text-decoration: none;
+    font-size: 16px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: max-content;
+    color: rgb(230, 255, 255);
+    min-width: max-content;
+    background-color: black;
+    border: 0.4px rgb(31, 31, 31) solid;
+    text-align: center;
+}
+
+table tr{
+    background-color: #2b2e2b;
+}
+tr:hover{
+    cursor: pointer;
+    opacity: 1;
+    background-color: rgb(36, 36, 36);
+    transition: 0.4s;
+}
+td:hover{
+    background-color: rgb(54, 53, 53);
+}
+table tr td{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: inherit;
+    border: solid black 0.4px;
+    max-height: 50px;
+    text-align: center;
+}
+.openbtn{
+    position: fixed;
+    display: block;
+}
+.con-form{
+    display: none;
+}
+.closebtn{
+    position: absolute;
+    right: 1%;
+    top: 5%;
+    font-size:30px;
+    text-decoration: none;
+    box-shadow: 0.1px 0.1px 1px 1px whitesmoke;
+    border-radius: 9px;
+}
+.closebtn:hover{
+    background-color: black;
+    color: whitesmoke;
+}
+.menubar-con{
+    position: absolute;
+    top: 15%;
+    bottom: 0%;
+    width: 100%;
+    background-color: grey;
+}
+.menubar-con input{
+    width: 100%;
+    font-size: 150%;
+    background-color: rgb(31, 31, 31);
+    color: wheat;
+    border: solid 1px white;
+    overflow-x: scroll;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+}
+.menubar-con input::-webkit-scrollbar{
+    display: none;
+}
+.menubar-con input:hover{
+    background-color: black;
+    color: white;
+}
+a{
+    background-color: inherit;
+}
+
+
+.table-head{
+    position: absolute;
+    top:0%;
+    left: 1%;
+    right: 1%;
+    height: 15%;
+}
+th{
+    overflow:scroll;
+}
+th::-webkit-scrollbar{
+    display: none;
+}
+
+
+
+.bclose{
+    position: absolute;
+    min-width: 5%;
+    min-height: 5%;
+    right: 0%;
+    top: 0%;
+    color: white;
+    background-color: black;
+    font-size: 200%;
+    opacity: 1;
+}
+.bclose:hover{
+    background-color: red;
+    color: yellow;
+}
+.con-form{
+    display: none;
+    position: fixed;
+    top: 30%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    background-color: white;
+    box-shadow: 50px 50px 200px 200px rgb(5, 101, 139);
+    overflow: auto;
+}
+.con-form::-webkit-scrollbar{
+    height: 2px;
+}
+.con-form p{
+    background-color: inherit;
+    width: 100%;
+    height: 5%;
+    position: relative;
+    left: 5%;
+    font-size: 200%;
+}
+.con-form p input{
+    position: absolute;
+    right: 10%;
+    width: 40%;
+    height: 150%;
+}
+.con-form p button{
+    background-color: darkgray;
+    color: white;
+    font-size: 70%;
+    position: absolute;
+    right: 10%;
+    bottom: 0%;
+}
+.con-form p button:hover{
+    background-color: black;
+    color: white;
+}
+.con-form::-webkit-scrollbar{
+    width: 1px;
+}

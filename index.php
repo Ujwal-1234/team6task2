@@ -1,69 +1,193 @@
-<!doctype html>
-<html lang="en">
-<head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-
-<!--My Custom CSS-->
-<link href="mycustom.css" rel="stylesheet" type="text/css">
-<title>Index Page</title>
-</head>
-<body>
-<!--Navbar--> 
-<!--<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-  <div class="container-fluid"> <a class="navbar-brand" href="#"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item"> <a class="nav-link active" aria-current="page" href="index.php">Home</a> </li>
-        <li class="nav-item"> <a class="nav-link" href="">Display</a> </li>
-      </ul>
+<?php
+require 'dbh.php';
+require 'index.html';
+date_default_timezone_set('Asia/Kolkata');
+        $day = date('l');
+        $time = date('h:i');
+        $min = date('i');
+        $pdate = date('Y-m-d');
+?>
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+    <div class="menu sidebar" id="mySidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <div class="menubar-con">
+            <input type="submit" name="logout" value="supply_chain_tracker">
+            <input type="submit" name="logout" value="weekly_progress">
+            <input type="submit" name="logout" value="critical_issues">
+            <input type="submit" name="logout" value="Drawing_Register">
+            <input type="submit" name="logout" value="Material_Requisition&Delivery">
+            <input type="submit" name="logout" value="Technical_Submittal">
+        </div>
+        
     </div>
-  </div>
-</nav>--> 
+    <div id="main">
+        <button class="openbtn" onclick="openNav()">☰</button>
+    </div>
+    <div class="cont">
+        <div class="table-head">
+            <table>
+            <tr>
+            <label >SUPPLY CHAIN TRACKER - TO BE UPDATED BY PROCUREMENT</label>
+            </tr>
+            <tr>
+                <th colspan="4">DETAILS AS PER BOQ & NON TENDERED ITEMS</th>
+                <th colspan="5">DETAILS AS PER BOQ & NON TENDERED ITEMS</th>
+                <th colspan="8">DETAILS AS PER BOQ & NON TENDERED ITEMS</th>
+            </tr>
+            <tr>
+                <th>Sr NO</th>
+                <th>BOQ NO</th>
+                <th>BREIF DESCRIPTION</th>
+                <th>MAKE/MODEL</th>
+                <th>QTY</th>
+                <th>UNIT</th>
+                <th>DATE OF SUBMISSION</th>
+                <th>LEAD TIME</th>
+                <th>DELIVERY REQUIRED AS PER PROJECT SCHEDULE</th>
+                <th>MAKE/MODEL APPROVED</th>
+                <th>ANY COST IMPACT DUE TO CHANGE IN MAKE ?</th>
+                <th>DATE OF APPROVAL</th>
+                <th>PO NO.</th>
+                <th>PO DATE</th>
+                <th>DATE OF DELIVERY AS PER PO</th>
+                <th>ACTUAL DATE OF DELIVERY</th>
+                <th>REMARKS</th>
+            </tr>
+        </div>
+            <?php
+                $serial = 1;
+                $q0 ="SELECT * FROM `workers`, `details` WHERE `workers`.`id` = `details`.`id`";
+                $result = $conn->query($q0);
+                if($result){
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            echo '<tr>
+                            <td>'.$serial.'</td>
+                            <td>'.$row['id'].'</td>
+                            <td>'.$row['name'].'</td>
+                            <td>'.$row['govt_id'].'</td>
+                            <td>'.$serial.'</td>
+                            <td>'.$row['id'].'</td>
+                            <td>'.$row['name'].'</td>
+                            <td>'.$row['govt_id'].'</td>
+                            <td>'.$serial.'</td>
+                            <td>'.$row['id'].'</td>
+                            <td>'.$row['name'].'</td>
+                            <td>'.$row['govt_id'].'</td>
+                            <td>'.$row['govt_id'].'</td>
+                            <td>'.$serial.'</td>
+                            <td>'.$row['id'].'</td>
+                            <td>'.$row['name'].'</td>
+                            <td>'.$row['govt_id'].'</td>
+                            </tr>';
+                            $serial=$serial+1;
+                        }
+                    } else {
+                        echo "No Data Found";
+                    }
+                }else{
+                    echo 'result not processed';
+                }
+                ?>  
+            </table>
+            
+        </div>          
+    </div>
+        
+        <div class="trans-back" id="idback">
+        </div>
+        <div class="con-form" id='idcform'>
+        <button class="bclose" id="idclose" onclick= bclose()>X</button>
+                <form action="submitted.php" method="post">
+                <p><h1>ENTRY</h1></p>
+                <p>
+                    <label> ID : </label>
+                    <input type="text" name="id">
+                </p>
+                <p>
+                    <label> DATE : </label>
+                    <input type="date" name="date" value="<?php echo $pdate; ?>">
+                </p>
+                <p>
+                    <label> TIME : </label>
+                    <input type="time" name="time" value="<?php echo $time; ?>">
+                </p>
+                <p>
+                    <button type="submit" name="butent">SUBMIT</button>
+                </p>
+            </form>
+            </div>
+        <div class="con-form" id="exidform">
+            <button class="bclose" id="idclose" onclick= bclose()>X</button>
+            <form action="ext.php" method="post">
+                <p><h1>LABOUR EXITING </h1></p>
+                <p>
+                    <label> ID : </label>
+                    <input type="text" name="lids">
+                </p>
+                <p>
+                    <label> DATE : </label>
+                    <input type="date" name="exdate" value="<?php echo $pdate; ?>">
+                </p>
+                <p>
+                    <label> TIME : </label>
+                    <input type="time" name="extin" value="<?php echo $time; ?>">
+                </p>
+                <p>
+                    <button type="submit" name="butex">SUBMIT</button>
+                </p>
+            </form>
+            </div>
+        <div class="con-form" id="newidform">
+            <button class="bclose" id="idclose" onclick= bclose()>X</button>
+            <form action="submit.php" method="post">
+            <p>
+                <label> <h1>NEW USER DATA</h1></label>
+                <hr>
+            </p>
+            <p><label>NAME</label>
+            <input type="text" name="lname" value="">
+            </p>
+            <p><label>TRADE</label>
+            <input type="text" name="ltrade" value="">
+            </p>
+            <p><label>FATHER NAME</label>
+            <input type="text" name="lfname" value="">
+            </p>
+            <p><label>D.O.B</label>
+            <input type="date" name="ldob" value="">
+            </p>
+            <p><label>ID NO</label>
+            <input type="text" name="lid" value="">
+            </p>
+            <p><label>GOVERNMENT ID</label>
+            <input type="text" name="lgovid" value="">
+            </p>
+            <p><label>Details for day : </label>
+            <input type="text" name="day" value=<?php echo $day;?>>
+            </p> 
+            <p><label>Date : </label>
+            <input type="date" name="date" value=<?php echo $pdate;?>>
+            </p>
+            <p><label>Entrance Time</label>
+            <input type="time" name="time" value=<?php echo $time;?>>
+            </p>
+            <p><label>Shift</label>
+            <input type="text" name="shift" value="D">
+            </p>
+            <p>
+            <button type="submit" name="butsub">SUBMIT</button>
+            </p>
+        </form>
+        </div>
+    </body>
+    <footer>
 
-<!-- Table display-->
-  <tbody>
-    <?php
-    //Read Excel file using PHPExcel library
-    error_reporting( 0 );
-    require_once "Classes/PHPExcel.php";
-    $path = "Team 6 Task 2 - Project Tracker - Part 2.xlsx";
-    $reader = PHPExcel_IOFactory::createReaderForFile( $path );
-    $excel_Obj = $reader->load( $path );
-
-    //Get the last sheet in excel
-    //$worksheet=$excel_Obj->getActiveSheet();
-
-    //Get the first sheet in excel
-    $worksheet = $excel_Obj->getSheet( '0' );
-    //echo $worksheet->getCell('E33')->getValue();
-    $No_of_Row = $worksheet->getHighestRow();
-    $No_of_Col = $worksheet->getHighestDataColumn();
-    $colomncount_number = PHPExcel_Cell::columnIndexFromString( $No_of_Col );
-    //echo $No_of_Row.'     ';
-    //echo $No_of_Col;
-    echo "<table class='table table-dark table-bordered table-striped table-hover table-responsive mt-5 text-center'>";
-    for ( $row = 0; $row <= $No_of_Row; $row++ ) {
-      echo "<tr>";
-      for ( $col = 0; $col <= $colomncount_number; $col++ ) {
-        echo "<td>";
-        echo $worksheet->getCell( PHPExcel_Cell::stringFromColumnIndex( $col ) . $row )->getValue();
-        echo "</td>";
-      }
-      echo "</tr>";
-    }
-    echo "</table>";
-    ?>
-  </tbody>
-<!-- Optional JavaScript --> 
-<!-- jQuery first, then Popper.js, then Bootstrap JS --> 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script> 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-</body>
+    </footer>
+    <script src="javascript.js"></script>
 </html>
